@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./Home.css";
 
 class Home extends Component {
@@ -25,7 +25,15 @@ class Home extends Component {
               statistical techniques to language data.
             </p>
           </div>
-          <div class="col-sm">One of three columns</div>
+          <div class="col-sm">  
+           <h6><b>Contact Information</b></h6>
+              <h6>BAA 315</h6> 
+              <h6>Northern Arizona University</h6>
+              <h6>Flagstaff, AZ 86011</h6> 
+              <h6>Phone (801) 979-1706 </h6>
+              <h6>Jesse.Egbert@nau.edu</h6>
+            
+          </div>
         </div>
       </div>
     );
