@@ -36,13 +36,30 @@ class Presentations extends Component { //extends power of parent React
       <td>Birmingham, UK</td>
     </tr>
     <tr>
-    <th scope="row">31</th>
+    <th scope="row">30</th>
     <td>Gray, B. Staples, S. & <b>Egbert, J.</b></td>
       <td>2017</td>
       <td> “Complexity in Writing Development: Untangling Two Approaches to Measuring Grammatical Complexity."</td>
       <td>Pre-conference workshop at the Corpus Linguistics International Conference 2017.</td>
       <td>Birmingham, UK</td>
     </tr>
+    <tr>
+    <th scope="row">30</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2016</td>
+      <td> “Connecting Corpus linguistics and Language Assessment”</td>
+      <td>Discussant for Invited Colloquium at American Association for Applied Linguistics 2016.</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+    <th scope="row">29</th>
+    <td>Decker, L., Cox, T. & <b>Egbert, J.</b></td>
+      <td>2016</td>
+      <td> “Effects of changing TOEFL cut-off scores: The impact of raising the bar."</td>
+      <td>Paper presented at the annual conference of the American Association for Applied Linguistics 2016.</td>
+      <td>Orlando, FL</td>
+    </tr>
+    
   </tbody>
 </table>
             <h1 className ="laura">Presentations</h1>
