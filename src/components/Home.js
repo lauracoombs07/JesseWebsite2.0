@@ -25,7 +25,7 @@ class Home extends Component {
               statistical techniques to language data.
             </p>
           </div>
-          <div class="col-sm">  
+          <div class="col-sm" align-content="center">  
            <h6><b>Contact Information</b></h6>
               <h6>BAA 315</h6> 
               <h6>Northern Arizona University</h6>

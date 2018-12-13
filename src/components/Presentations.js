@@ -7,7 +7,44 @@ class Presentations extends Component { //extends power of parent React
     render() {//calling a function fruom index.js
         return(
             <div>
-            
+            <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Presenter(s)</th>
+      <th scope="col">Year</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">32</th>
+      <td><b>Egbert, J.</b> & Mahlberg, M.</td>
+      <td>2017</td>
+      <td>"Fiction--One register or two?: Narrative and fictional speech in Dicken's novels."</td>
+      <td>Paper presented at the Corpus Linguistics International Conference 2017.</td>
+      <td>Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">31</th>
+    <td>Gray, B. & <b>Egbert, J.</b></td>
+      <td>2017</td>
+      <td>“Exploring methods for evaluating corpus representativeness."</td>
+      <td>Paper presented at the Corpus Linguistics International Conference 2017.</td>
+      <td>Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">31</th>
+    <td>Gray, B. Staples, S. & <b>Egbert, J.</b></td>
+      <td>2017</td>
+      <td> “Complexity in Writing Development: Untangling Two Approaches to Measuring Grammatical Complexity."</td>
+      <td>Pre-conference workshop at the Corpus Linguistics International Conference 2017.</td>
+      <td>Birmingham, UK</td>
+    </tr>
+  </tbody>
+</table>
             <h1 className ="laura">Presentations</h1>
             <ul>
             <li>*** = invited presentation</li>

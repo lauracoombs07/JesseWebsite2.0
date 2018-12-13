@@ -6,5 +6,5 @@
   font-size: 200px;
 } */
 
-ul.a {list-style-type: circle;}
-ul.b {list-style-type: square;}
+ul {list-style-type: none;}
+/* ul.b {list-style-type: square;} */
