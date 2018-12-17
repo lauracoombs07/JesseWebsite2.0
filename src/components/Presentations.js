@@ -3,6 +3,7 @@ import "./Presentations.css";
 import { Link } from 'react-router-dom'
 
 
+
 class Presentations extends Component { //extends power of parent React
     render() {//calling a function fruom index.js
         return(
@@ -47,7 +48,7 @@ class Presentations extends Component { //extends power of parent React
     <th scope="row">30</th>
     <td><b>Egbert, J.</b></td>
       <td>2016</td>
-      <td> “Connecting Corpus linguistics and Language Assessment”</td>
+      <td> ***“Connecting Corpus linguistics and Language Assessment.”</td>
       <td>Discussant for Invited Colloquium at American Association for Applied Linguistics 2016.</td>
       <td>Orlando, FL</td>
     </tr>
@@ -59,6 +60,127 @@ class Presentations extends Component { //extends power of parent React
       <td>Paper presented at the annual conference of the American Association for Applied Linguistics 2016.</td>
       <td>Orlando, FL</td>
     </tr>
+    <tr>
+    <th scope="row">28</th>
+    <td>Baker, P. & <b>Egbert, J.</b></td>
+      <td>2015</td>
+      <td> "Triangulating methodological approaches."</td>
+      <td>Panel presented at Corpus Linguistics 2015.</td>
+      <td> Lancaster, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">27</th>
+    <td>Biber, D., <b>Egbert, J.</b> & Davies, M.</td>
+      <td>2015</td>
+      <td> “Effects of changing TOEFL cut-off scores: The impact of raising the bar."</td>
+      <td>Paper presented at the annual conference of the American Association for Applied Linguistics 2016.</td>
+      <td>Orlando, FL</td>
+    </tr>
+    <tr>
+    <th scope="row">26</th>
+    <td>Staples, S., <b>Egbert, J.</b> & LaFlair, G.</td>
+      <td>2015</td>
+      <td> “A Multi-Dimensional Comparison of Oral Proficiency Interviews to Conversation, Academic and Professional Spoken Registers."</td>
+      <td>Paper presented at Corpus Linguistics 2015.</td>
+      <td>Lancaster, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">25</th>
+    <td>Davies, M. & <b>Egbert, J.</b></td>
+      <td>2015</td>
+      <td> “A Large Corpus-based Study of the Historical Development of [Noun+Noun] Sequences in American English.”</td>
+      <td>Paper presented at the Studies in the History of the English Language Conference.</td>
+      <td>Vancouver, Canada</td>
+    </tr>
+    <tr>
+    <th scope="row">24</th>
+    <td><b>Egbert, J.</b>, Biber, D., & Szmrecsanyi, B.</td>
+      <td>2015</td>
+      <td> “The Evolution of the English Genitive: Predicting Diachronic Change in Noun Modifier Use.”</td>
+      <td>Paper presented at the Studies in the History of the English Language Conference.</td>
+      <td>Vancouver, Canada</td>
+    </tr>
+    <tr>
+    <th scope="row">23</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2015</td>
+      <td> ***“Mixed Effects Models”</td>
+      <td>Workshop given at the Germanic Linguistics Annual Conference.</td>
+      <td>Provo, Utah</td>
+    </tr>
+    <tr>
+    <th scope="row">22</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2015</td>
+      <td> ***“Going Beyond p-values: Making Your Statistical Methods More Rigorous and Robust”</td>
+      <td>Workshop given at the Germanic Linguistics Annual Conference.</td>
+      <td>Provo, Utah</td>
+    </tr>
+    <tr>
+    <th scope="row">21</th>
+    <td>LaFlair, G. & <b>Egbert, J.</b></td>
+      <td>2015</td>
+      <td> “Presenting your Data with R Graphics”</td>
+      <td>Workshop given at the annual conference of the American Association for Corpus Linguistics.</td>
+      <td>Flagstaff, Arizona</td>
+    </tr>
+    <tr>
+    <th scope="row">20</th>
+    <td>Biber, D., <b>Egbert, J.</b> & Terblanche, L. </td>
+      <td>2014</td>
+      <td> “Dimensions of Variation in English Web Registers”</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics.</td>
+      <td>Flagstaff, Arizona</td>
+    </tr>
+    <tr>
+    <th scope="row">19</th>
+    <td>Staples, S., <b>Egbert, J.</b>  & LaFlair, G.</td>
+      <td>2014</td>
+      <td> “Comparing Oral Proficiency Interviews to Academic and Professional Spoken Registers”</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics.</td>
+      <td>Flagstaff, Arizona</td>
+    </tr>
+    <tr>
+    <th scope="row">18</th>
+    <td>Gray, B., Qian, M., & <b>Egbert, J.</b></td>
+      <td>2014</td>
+      <td> “Internal Representativeness and Specialized Corpora: The Influence of Topic on the Stability of Linguistic Findings in a Disciplinary Writing Corpus”</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics.</td>
+      <td>Flagstaff, Arizona</td>
+    </tr>
+    <tr>
+    <th scope="row">17</th>
+    <td><b>Egbert, J.</b> & Plonsky, L.</td>
+      <td>2014</td>
+      <td> “The Linguistic and Stylistic Features of SLA Conference Abstract and Their Relationship to Ratings”</td>
+      <td>Paper presented at the annual conference of the American Association for Applied Linguistics.</td>
+      <td>Portland, Oregon</td>
+    </tr>
+    <tr>
+    <th scope="row">16</th>
+    <td>Plonsky, L., <b>Egbert, J.</b> & LaFlair, G. </td>
+      <td>2014</td>
+      <td>“Bootstrapped t-tests and ANOVAs: Using Data Reanalysis to Assess Their Potential in L2 Research”</td>
+      <td>Paper presented at the annual conference of the American Association for Applied Linguistics.</td>
+      <td>Portland, Oregon</td>
+    </tr>
+    <tr>
+    <th scope="row">15</th>
+    <td><b>Egbert, J.</b> & Biber, D. </td>
+      <td>2014</td>
+      <td>“Developing a User-based Method of Web Register Classification”</td>
+      <td>Paper presented at the annual Web as Corpus workshop @Corpus Linguistics.</td>
+      <td>Lancaster, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">14</th>
+    <td><b>Egbert, J.</b> & Biber, D. </td>
+      <td>2014</td>
+      <td>“Developing a User-based Method of Web Register Classification”</td>
+      <td>Paper presented at the annual Web as Corpus workshop @Corpus Linguistics.</td>
+      <td>Lancaster, UK</td>
+    </tr>
+
     
   </tbody>
 </table>
