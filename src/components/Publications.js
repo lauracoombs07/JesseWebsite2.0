@@ -1,9 +1,16 @@
 import React, {Component} from "react"
 import "./Publications.css";
-import { Link } from 'react-router-dom'
+
 
 
 class Publications extends Component { //extends power of parent React
+
+    
+    
+    
+    
+    
+    
     render() {//calling a function fruom index.js
         return(
             <div>

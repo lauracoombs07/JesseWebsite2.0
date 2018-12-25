@@ -1,6 +1,5 @@
 import React, {Component} from "react"
 import "./Presentations.css";
-import { Link } from 'react-router-dom'
 
 
 
@@ -8,7 +7,7 @@ class Presentations extends Component { //extends power of parent React
     render() {//calling a function fruom index.js
         return(
             <div>
-            <table class="table table-bordered">
+            <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -174,13 +173,116 @@ class Presentations extends Component { //extends power of parent React
     </tr>
     <tr>
     <th scope="row">14</th>
-    <td><b>Egbert, J.</b> & Biber, D. </td>
+    <td><b>Egbert, J.</b></td>
       <td>2014</td>
       <td>“Developing a User-based Method of Web Register Classification”</td>
       <td>Paper presented at the annual Web as Corpus workshop @Corpus Linguistics.</td>
       <td>Lancaster, UK</td>
     </tr>
-
+    <tr>
+    <th scope="row">13</th>
+    <td><b>Egbert, J.</b> </td>
+      <td>2013</td>
+      <td>“Student Perceptions of Stylistic Variation in Introductory University Textbooks”</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics</td>
+      <td>San Diego, CA</td>
+    </tr>
+    <tr>
+    <th scope="row">12</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2012</td>
+      <td>***“Multi-dimensional Analysis: An Introduction”</td>
+      <td>Session taught in the Birmingham/Melbourne Summer School in Applied Linguistics</td>
+      <td>University of Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">11</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2012</td>
+      <td>***“Historical Change in Genitive and Noun-Noun Use across Registers”</td>
+      <td>Paper presented in the English Department Faculty Seminar</td>
+      <td>University of Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">10</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2012</td>
+      <td>“Grammatical Complexity in EAP Reading Textbooks”.</td>
+      <td>Public talk given in the English Department Postgraduate Speaker Series</td>
+      <td>University of Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">9</th>
+    <td><b>Egbert, J.</b> & Biber, D. </td>
+      <td>2012</td>
+      <td>“Style and Authorship in Nineteenth Century Fiction: A Multi-Dimensional Analysis”</td>
+      <td>Paper accepted in the annual conference of the American Association for Applied Linguistics</td>
+      <td>University of Birmingham, UK</td>
+    </tr>
+    <tr>
+    <th scope="row">8</th>
+    <td>LaFlair, G., <b>Egbert, J.</b>, & Miller, D. </td>
+      <td>2012</td>
+      <td>“Structural Compression and Elaboration across Levels of ESL Reading Textbook Series”</td>
+      <td>Paper accepted in the annual conference of the American Association for Applied Linguistics</td>
+      <td>Boston</td>
+    </tr>
+    <tr>
+    <th scope="row">7</th>
+    <td><b>Egbert, J.</b> & LaFlair, G. </td>
+      <td>2012</td>
+      <td>“Grammatical Complexity in ESL Reading Textbooks”</td>
+      <td>Paper presented at the Northern Arizona Regional TESOL conference</td>
+      <td>Flagstaff</td>
+    </tr>
+    <tr>
+    <th scope="row">6</th>
+    <td>Staples, S., <b>Egbert, J.</b> & Laird, J. </td>
+      <td>2012</td>
+      <td>“Variability of Lexical Bundles in the TOEFL iBT”.</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics</td>
+      <td>Atlanta</td>
+    </tr>
+    <tr>
+    <th scope="row">5</th>
+    <td>Prince, D., <b>Egbert, J.</b>  Kim, Y., & Laird, J. </td>
+      <td>2012</td>
+      <td>“Variability of Lexical Bundles in the TOEFL iBT”.</td>
+      <td>Paper presented at the annual conference of the American Association for Corpus Linguistics</td>
+      <td>New Orleans</td>
+    </tr>
+    <tr>
+    <th scope="row">4</th>
+    <td> Gray, B., Smart, J., <b>Egbert, J.</b>, Al-Surmi, M. & Poltavtchenko, E.  </td>
+      <td>2011</td>
+      <td>***“Corpus Linguistics”</td>
+      <td>Advocacy Roundtable presentation at the annual conference of the Arizona Teachers of English to Speakers of Other Languages</td>
+      <td>Phoenix</td>
+    </tr>
+    <tr>
+    <th scope="row">3</th>
+    <td>Prince, D., <b>Egbert, J.</b>  Kim, Y., & Laird, J. </td>
+      <td>2010</td>
+      <td>“Using Corpus Tools and Findings to Enhance Your Classroom”</td>
+      <td>Paper presented at the annual conference of the Arizona Teachers of English to Speakers of Other Languages</td>
+      <td>Phoenix</td>
+    </tr>
+    <tr>
+    <th scope="row">2</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2009</td>
+      <td>“Intergenerational Language Attitudes and Vitality: The Navajo Language Shift”</td>
+      <td>Paper presented at the annual conference of the American Association for Applied Linguistics</td>
+      <td>Denver</td>
+    </tr>
+    <tr>
+    <th scope="row">1</th>
+    <td><b>Egbert, J.</b></td>
+      <td>2009</td>
+      <td>“The Navajo Language Shift”</td>
+      <td>Paper presented at the annual Utah Conference on Undergraduate Research</td>
+      <td>Salt Lake City</td>
+    </tr>
     
   </tbody>
 </table>
