@@ -10,7 +10,7 @@ class Home extends Component {
         <div class="row">
           <div class="col">
             <img
-              src="http://oak.ucc.nau.edu/jae89/Jesse3.jpg"
+              src="Jesseprofile.jpg"
               class="PIC"
               alt="Jesse Profile"
             />
