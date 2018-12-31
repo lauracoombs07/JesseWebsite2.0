@@ -15,6 +15,7 @@ body {
 
 .PIC1{
     width: 100%;
+    max-height: 350px;
     margin-left: auto;
     margin-right: auto;
   }

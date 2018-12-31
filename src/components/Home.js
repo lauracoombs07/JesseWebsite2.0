@@ -28,12 +28,13 @@ class Home extends Component {
             </p>
           </div>
           <div class="col" style={{ textAlign: 'center'}}>  
-           <h6><b>Contact Information</b></h6>
+           <h5><b>Contact Information</b></h5>
               <h6>BAA 315</h6> 
               <h6>Northern Arizona University</h6>
               <h6>Flagstaff, AZ 86011</h6> 
               <h6>Phone (801) 979-1706 </h6>
               <h6>jesse.egbert@nau.edu</h6>
+              <a class="btn btn-primary" href="/user" role="button">Login</a>
             
           </div>
         </div>

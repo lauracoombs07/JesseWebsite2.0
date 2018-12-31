@@ -7,6 +7,7 @@ import Presentations from "./components/Presentations";
 import Publications from "./components/Publications";
 import Research from "./components/Research";
 import Teaching from "./components/Teaching";
+import User from "./components/User";
 
 const Routing = () => (
   <Router>
@@ -18,6 +19,7 @@ const Routing = () => (
       <Route path="/publications" component={Publications} />
       <Route path="/research" component={Research} />
       <Route path="/teaching" component={Teaching} />
+      <Route path="/user" component={User} />
     </Switch>
   </Router>
 );
