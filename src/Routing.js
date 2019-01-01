@@ -8,6 +8,7 @@ import Publications from "./components/Publications";
 import Research from "./components/Research";
 import Teaching from "./components/Teaching";
 import User from "./components/User";
+import PresentationsForm from "./components/admin/PresentationsForm";
 
 const Routing = () => (
   <Router>
@@ -20,6 +21,7 @@ const Routing = () => (
       <Route path="/research" component={Research} />
       <Route path="/teaching" component={Teaching} />
       <Route path="/user" component={User} />
+      <Route path="/admin/presentationsform" component={PresentationsForm} />
     </Switch>
   </Router>
 );
