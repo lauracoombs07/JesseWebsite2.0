@@ -9,20 +9,46 @@ class PresentationsForm extends Component {
         title: '',
         description: '',
         location: '',
-        presentation: []
 
     }
     handleSubmit = (e) => {
         e.preventDefault();//puts in in the browser and refreshes page
         const data = JSON.stringify({...this.state})
-        fetch('http://localhost:4000', { //(url you are fetching from)
+        fetch('http://localhost:4000/presentations', { //(url you are fetching from)
             method: 'POST',
             body: data,
             headers: {
                 "Content-Type": "application/json"
-            }
+            } 
         })
     }
+    handleListAll = (e) => {
+        e.preventDefault();
+        alert('you have clicked');
+        fetch('http://localhost:4000/presentations')
+        .then((res) => { return res.json() })
+        .then((data) => {
+            let result = `<h2> Random Presentation Info From Jsonplaceholder API</h2>`;
+            data.forEach((presentation) => {
+                const { number, presenter, year, title, description, location: { city, country } } = presentation
+                result +=
+                    `<div>
+                     <h5> Presenation ID: ${number} </h5>
+                         <ul class="w3-ul">
+                             <li> Presenter Name : ${presenter}</li>
+                             <li> Year : ${year} </li>
+                             <li> Title : ${title}</li>
+                             <li> Description : ${description} </li>
+                             <li> Location : ${city}, ${country} </li>
+                         </ul>
+                      </div>`;
+                      return result
+                        // document.getElementById('result').innerHTML = result;
+                    });
+                }) 
+
+            }
+        
   render() {
       console.log(this.state)
     return (
@@ -31,11 +57,11 @@ class PresentationsForm extends Component {
 
           <div className="form-group">
             <label htmlFor="exampleInputPresenter">Presenter(s)</label>
-            <input type="test" className="form-control" id="exampleInputName" placeholder="Presenter(s)"
+            <input type="text" className="form-control" id="exampleInputPresenter" placeholder="Presenter(s)"
                 onChange={e => this.setState({presenter: e.target.value})}/>
         </div>
          <div className="form-group">
-             <label htmlFor="exampleInputAddress">Year</label>
+             <label htmlFor="exampleInputYear">Year</label>
              <input type="number" className="form-control" id="exampleInputYear" placeholder="Year"
                  onChange={e => this.setState({year: e.target.value})}/>
          </div>
@@ -57,7 +83,7 @@ class PresentationsForm extends Component {
 
   <button type="submit" className="btn btn-primary">Submit</button>
     </form>
-    <button type="submit" className="btn btn-primary">List All</button>
+    <button onClick={e => this.handleListAll(e)} type="submit" className="btn btn-primary">List All</button>
       </div>
     );
   }

@@ -59,4 +59,4 @@ class TeachingForm extends Component {
   }
 }
 
-export default PresentationsForm;
+export default TeachingForm;

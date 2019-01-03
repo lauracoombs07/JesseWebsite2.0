@@ -9,6 +9,10 @@ import Research from "./components/Research";
 import Teaching from "./components/Teaching";
 import User from "./components/User";
 import PresentationsForm from "./components/admin/PresentationsForm";
+import AwardsForm from "./components/admin/AwardsForm";
+import PublicationsForm from "./components/admin/PublicationsForm";
+import TeachingForm from "./components/admin/TeachingForm";
+import ResearchForm from "./components/admin/ResearchForm";
 
 const Routing = () => (
   <Router>
@@ -22,6 +26,10 @@ const Routing = () => (
       <Route path="/teaching" component={Teaching} />
       <Route path="/user" component={User} />
       <Route path="/admin/presentationsform" component={PresentationsForm} />
+      <Route path="/admin/awardsform" component={AwardsForm} />
+      <Route path="/admin/publicationsform" component={PublicationsForm} />
+      <Route path="/admin/teachingform" component={TeachingForm} />
+      <Route path="/admin/researchform" component={ResearchForm} />
     </Switch>
   </Router>
 );

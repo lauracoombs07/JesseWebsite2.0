@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class PresentationsForm extends Component {
+class ResearchForm extends Component {
 
     state = {
         name: '',
@@ -59,4 +59,4 @@ class PresentationsForm extends Component {
   }
 }
 
-export default PresentationsForm;
+export default ResearchForm;
