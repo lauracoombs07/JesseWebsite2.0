@@ -7,6 +7,7 @@ class Presentations extends Component { //extends power of parent React
     render() {//calling a function fruom index.js
         return(
             <div>
+              <a class="btn btn-primary" href="/PresentationsForm.js" role="button">Form</a>
             <table class="table table-striped">
   <thead>
     <tr>
