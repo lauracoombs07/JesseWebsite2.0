@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-
+let dbPresentations
 class PresentationsForm extends Component {
 
     state = {
@@ -9,8 +9,9 @@ class PresentationsForm extends Component {
         title: '',
         description: '',
         location: '',
-
+        list: []
     }
+
     handleSubmit = (e) => {
         e.preventDefault();//puts in in the browser and refreshes page
         const data = JSON.stringify({...this.state})
@@ -22,35 +23,55 @@ class PresentationsForm extends Component {
             } 
         })
     }
-    handleListAll = (e) => {
-        e.preventDefault();
-        alert('you have clicked');
-        fetch('http://localhost:4000/presentations')
-        .then((res) => { return res.json() })
-        .then((data) => {
-            let result = `<h2> Random Presentation Info From Jsonplaceholder API</h2>`;
-            data.forEach((presentation) => {
-                const { number, presenter, year, title, description, location: { city, country } } = presentation
-                result +=
-                    `<div>
-                     <h5> Presenation ID: ${number} </h5>
-                         <ul class="w3-ul">
-                             <li> Presenter Name : ${presenter}</li>
-                             <li> Year : ${year} </li>
-                             <li> Title : ${title}</li>
-                             <li> Description : ${description} </li>
-                             <li> Location : ${city}, ${country} </li>
-                         </ul>
-                      </div>`;
-                      return result
-                        // document.getElementById('result').innerHTML = result;
-                    });
-                }) 
+    componentDidMount() {
+        fetch('http://localhost:4000/presentations', {
+            headers: {
+             "Content-Type": "application/json"
+            }   
+        }).then(results => {
+            return results.json()
+        }).then(data => {
+        dbPresentations = data       
+        // console.log(data)  //inspect page I can see data coming in as array in console   
+        this.setState({
+            list: dbPresentations
+        }, console.log(this.state.list))//runs console log before set state. if we put it here, it forces th console log to run right where we want
+        })//checking react devtools in chrome the list IS infact in state
 
-            }
+    }
+
+
+    //only needs to be a function on one side or the other
+    // handleListAll = (e) => {
+    //     e.preventDefault();//probably don't need this but doesn't hurt
+    //     alert('you have clicked');
+    //     fetch('http://localhost:4000/presentations')
+    //     .then((res) => { return res.json() })
+    //     .then((data) => {
+    //         let result = `<h2> Random Presentation Info From Jsonplaceholder API</h2>`;
+    //         data.forEach((presentation) => {
+    //             const { number, presenter, year, title, description, location: { city, country } } = presentation
+    //             result +=
+    //                 `<div>
+    //                  <h5> Presenation ID: ${number} </h5>
+    //                      <ul class="w3-ul">
+    //                          <li> Presenter Name : ${presenter}</li>
+    //                          <li> Year : ${year} </li>
+    //                          <li> Title : ${title}</li>
+    //                          <li> Description : ${description} </li>
+    //                          <li> Location : ${city}, ${country} </li>
+    //                      </ul>
+    //                   </div>`;
+    //                   return result
+    //                     // document.getElementById('result').innerHTML = result;
+    //                 });
+    //             }) 
+
+    //         }
         
   render() {
-      console.log(this.state)
+   let presentations = this.state.list
+    // console.log(presentations)
     return (
       <div className="Presentations">
         <form onSubmit={this.handleSubmit}> 
@@ -83,10 +104,29 @@ class PresentationsForm extends Component {
 
   <button type="submit" className="btn btn-primary">Submit</button>
     </form>
-    <button onClick={e => this.handleListAll(e)} type="submit" className="btn btn-primary">List All</button>
+    {/* <button onClick={e => this.handleListAll(e)} className="btn btn-primary">List All</button>
+       */}
+      
+      <hr/>
+      {presentations.map(presentation => ( 
+        <div key={presentation._id}> 
+            presenter: {presentation.presenter}
+            {presentation.year}
+         </div>
+
+      )
+        )}
       </div>
     );
   }
 }
 
 export default PresentationsForm;
+// presenter: '',
+//         year: '',
+//         title: '',
+//         description: '',
+//         location: '',
+//         list: []
+
+//using the index as the unique id only works if there is a single map on a page could use presentation.id}
