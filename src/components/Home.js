@@ -34,7 +34,7 @@ class Home extends Component {
               <h6>Flagstaff, AZ 86011</h6> 
               <h6>Phone (801) 979-1706 </h6>
               <h6>jesse.egbert@nau.edu</h6>
-              <a class="btn btn-primary" href="/PresentationsForm.js" role="button">Form</a>
+              <a class="btn btn-primary" href="/admin/PresentationsForm" role="button">Form</a>
             
           </div>
         </div>
