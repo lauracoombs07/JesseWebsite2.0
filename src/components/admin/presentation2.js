@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+let presentations = ''
 class PresentationsForm extends Component {
   //'this.' would be the same as saying 'PresentationsForm.'. state is an object
   state = {
@@ -12,9 +12,37 @@ class PresentationsForm extends Component {
     list: [],
     searchId: ""
   };
- 
+
+
+  componentDidMount() {
+    fetch("http://localhost:4000/presentations", {
+      // mode: "cors", may or may not need it...mike did it here in his because he didn't have access to third party api
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(results => {
+        return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
+      })
+      .then(data => {
+          presentations = data.reduce((acc, cur)=> cur, 0)
+        // console.log(data)  //inspect page I can see data coming in as array in console
+        this.setState({
+            presenter: presentations.presenter,
+            year: presentations.year,
+            title: presentations.title,
+            description: presentations.description,
+            location: presentations.location,
+            id: presentations._id
+        },() => {
+
+        }) //runs console log before set state. if we put it here, it forces th console log to run right where we want
+      });
+  }
+
+       
   handleSubmit = async e => {
-    
+    alert("Submit information");
     e.preventDefault(); //puts in in the omnibar/address bar and refreshes page
     const data = JSON.stringify({ ...this.state }); //spread syntax...take object from the form and making it a json string
     await fetch("http://localhost:4000/presentations", {
@@ -24,7 +52,6 @@ class PresentationsForm extends Component {
         "Content-Type": "application/json" //sending json instead of object. where it's going and what kind
       }
     });
-    await this.getPresenters()
   };
 
 //   handleSearchId = async (e, _id) => {
@@ -48,47 +75,36 @@ class PresentationsForm extends Component {
 //       });
 //   };
 
-  handleUpdateItem = async (e, _id) => {
-    
+  handleUpdateItem = (e, _id) => {
+    alert("Update information");
     e.preventDefault();
-    await fetch("http://localhost:4000/presentations/" + _id, {
+    return fetch("http://localhost:4000/presentations/" + _id, {
       method: "PUT",
       body: ""
     });
-    await this.getPresenters()
   }; //attach + _id to the end of the URL and in handleOnClick(e, _id)
 
-  handleDeleteItem = async (_id) => {
-    
-    await fetch("http://localhost:4000/presentations/" + _id, {
+  handleDeleteItem = (e, _id) => {
+    alert("Delete Information");
+    e.preventDefault();
+    fetch("http://localhost:4000/presentations/" + _id, {
       method: "DELETE"
     });
-    await this.getPresenters()
-};
 
+  // handleDeleteItem = (e) => {
+  //     e.preventDefault()
 
-getPresenters = async () => {
-    await fetch("http://localhost:4000/presentations", {
-        // mode: "cors", may or may not need it...mike did it here in his because he didn't have access to third party api
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(results => {
-          return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
-        })
-        .then(data => {
-            
-          this.setState({list: data}); 
-        });
-      }
+  //     const oldData = this.state.items.filter(item => item.item_id !== e.target.name)
+  //     this.setState({presentations: formData})
+  // }
+  // handleOnChange =(e) => {
+  //     e.preventDefault()
+  //     const formData = this.state.presentations
+  //     this.setState({presentations: formData})
+  // }
+  }; //attach + _id to the end of the URL and in handleOnClick(e, _id)
 
-  async componentWillMount() {
-      await this.getPresenters()
-  }
-   
-
-
+  //e is the change or click or whatever target.value is what it changed to and sending to state.     function takes in (e)...what is the event (console.log 'e')
   render() {
     const presentations = this.state.list;
 
@@ -155,10 +171,10 @@ getPresenters = async () => {
         <hr />
         <form>
           <div className="form-search">
-            <label htmlFor="exampleInputID" />
+            <label for="exampleInputID" />
             <input
               type="text"
-              className="form-control"
+              class="form-control"
               id="presentationId"
               aria-describedby="id"
               placeholder="Search by Id"
@@ -166,38 +182,37 @@ getPresenters = async () => {
             />
             {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" class="btn btn-primary">
             Search
           </button>
-          {/* <button onClick={() => this.handleSearchId( presentation._id)}>
-              {" "}
-              Find One{" "}
-            </button> */}
         </form>
         <hr />
-            {presentations.map(presentation => (
-                <div key={presentation._id}>presenter: {presentation.presenter}
-                    <br />
-                    Year: {presentation.year}
-                    <br />
-                    Title: {presentation.title}
-                    <br />
-                    Location: {presentation.location}
-                    <br />
-                    Description: {presentation.description}
-                    <br />
-                    id: {presentation._id}
-            
+        {presentations.map(presentation => (
+          <div key={presentation._id}>
+            presenter: {presentation.presenter}
+            <br />
+            Year: {presentation.year}
+            <br />
+            Title: {presentation.title}
+            <br />
+            Location: {presentation.location}
+            <br />
+            Description: {presentation.description}
+            <br />
+            id: {presentation._id}
+            <hr />
             <button onClick={e => this.handleUpdateItem(e, presentation._id)}>
               {" "}
               Edit{" "}
             </button>
-            <button onClick={() => this.handleDeleteItem(presentation._id)}>
+            <button onClick={e => this.handleDeleteItem(e, presentation._id)}>
               {" "}
               X{" "}
             </button>
-            <hr />
-
+            <button onClick={e => this.handleSearchId(e, presentation._id)}>
+              {" "}
+              Find One{" "}
+            </button>
           </div>
         ))}
       </div>
