@@ -8,7 +8,7 @@ class Awards extends Component {
     return (
       <div>
           <h1 className ="laura">Awards</h1>
-        <ul class="b">
+        <ul className="b">
         <li>NAU Faculty Development Grant (2016)</li>
         <li>BYU College of Humanities Research Grant (2015)</li>
         <li>Spaan Research Grant, CaMLA (2014)</li>

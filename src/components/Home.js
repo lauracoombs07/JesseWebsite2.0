@@ -5,18 +5,18 @@ class Home extends Component {
   render() {
     return (
       
-      <div class="container1">
+      <div className="container1">
       
-        <div class="row">
-          <div class="col">
+        <div className="row">
+          <div className="col">
             <img
               src="Jesseprofile.jpg"
-              class="PIC"
+              className="PIC"
               alt="Jesse Profile"
             />
           </div>
-          <div class="col-6 wrapper" >
-            <p class="welcome">
+          <div className="col-6 wrapper" >
+            <p className="welcome">
               Welcome! I am an Assistant Professor of Applied Linguistics at
               Northern Arizona University. As a researcher, I specialize in the
               use of corpus linguistic methods to explore patterns of language
@@ -27,14 +27,14 @@ class Home extends Component {
               statistical techniques to language data.
             </p>
           </div>
-          <div class="col" style={{ textAlign: 'center'}}>  
+          <div className="col" style={{ textAlign: 'center'}}>  
            <h5><b>Contact Information</b></h5>
               <h6>BAA 315</h6> 
               <h6>Northern Arizona University</h6>
               <h6>Flagstaff, AZ 86011</h6> 
               <h6>Phone (801) 979-1706 </h6>
               <h6>jesse.egbert@nau.edu</h6>
-              <a class="btn btn-primary" href="/admin/PresentationsForm" role="button">Form</a>
+              <a className="btn btn-primary" href="/admin/PresentationsForm" role="button">Form</a>
             
           </div>
         </div>
