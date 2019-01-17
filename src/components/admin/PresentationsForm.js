@@ -1,4 +1,10 @@
 import React, { Component } from "react";
+import { createBrowserHistory } from 'history';
+
+const apiURL = 'http://localhost:4000/presentations'
+
+
+const history = createBrowserHistory();
 
 class PresentationsForm extends Component {
   //'this.' would be the same as saying 'PresentationsForm.'. state is an object
@@ -9,90 +15,102 @@ class PresentationsForm extends Component {
     title: "",
     description: "",
     location: "",
-    list: [],
-    searchId: ""
-  };
- 
-  handleSubmit = async e => {
+    presentations: [{
+        // Presenter: '',
+        // Year: '',
+        // Title: '',
+        // Description: '',
+        // Location: '',
+        // id: '',
     
+    }],
+  };
+
+  getPresentations = async () => {
+    return fetch('http://localhost:4000/presentations')
+      .then(results => {
+        return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
+      })
+      .then((data) => {
+        this.setState({presentations: data});
+      });
+  };//Scope locked data1 variable
+
+
+
+  handleSubmit = async (e) => {
     e.preventDefault(); //puts in in the omnibar/address bar and refreshes page
-    const data = JSON.stringify({ ...this.state }); //spread syntax...take object from the form and making it a json string
-    await fetch("http://localhost:4000/presentations", {
+    const formData = JSON.stringify({ 
+        presenter: this.state.presenter,
+        year: this.state.year,
+        title: this.state.title,
+        description: this.state.description,
+        location: this.state.location
+     }); 
+    await fetch(apiURL, {
       method: "POST",
-      body: data,
+      body: formData,
       headers: {
         "Content-Type": "application/json" //sending json instead of object. where it's going and what kind
       }
     });
-    await this.getPresenters()
+    await this.getPresentations();
+    history.go(0)//clears the form by refreshing the page. change later to set inputs to empty ''
   };
 
-//   handleSearchId = async (e, _id) => {
-//     alert("FIND ONE id");
-//     e.preventDefault(); //
-//     const searchId = JSON.stringify({ ...this.state });
-//     await fetch("http://localhost:4000/presentations/:" + _id, {
-//       headers: {
-//         "Content-Type": "application/json"
-//       }
-//     })
-//       .then(results => {
-//         return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
-//       })
-//       .then(data => {
-//         this.setState({
-//           //id, presenter: , year, title, description, location
-//           //putting it into state so we can access it. using it in map at bottom
-//           // list: searchId //only getting list [] from db
-//         }); //runs console log before set state. if we put it here, it forces th console log to run right where we want
-//       });
-//   };
+    // handleSearchId = async (e, _id) => {
+    //   alert("FIND ONE id");
+    //   e.preventDefault(); //
+    //   const searchId = JSON.stringify({ ...this.state });
+    //   await fetch(apiURL/:" + _id, {
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     }
+    //   })
+    //     .then(results => {
+    //       return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
+    //     })
+    //     .then(data => {
+    //       this.setState({
+    //         //id, presenter: , year, title, description, location
+    //         //putting it into state so we can access it. using it in map at bottom
+    //         // list: searchId //only getting list [] from db
+    //       }); //runs console log before set state. if we put it here, it forces th console log to run right where we want
+    //     });
+    // };
 
   handleUpdateItem = async (e, _id) => {
-    
-    e.preventDefault();
-    await fetch("http://localhost:4000/presentations/" + _id, {
+    e.preventDefault();  
+    const formUpdate = JSON.stringify({ ...this.state })
+    await fetch(apiURL + `/` + _id, {  //path
       method: "PUT",
-      body: ""
+      body: formUpdate,
+      headers: { "Content-Type":"application/json" }
     });
-    await this.getPresenters()
-  }; //attach + _id to the end of the URL and in handleOnClick(e, _id)
+    await this.getPresentations();
+  };
 
-  handleDeleteItem = async (_id) => {
-    
-    await fetch("http://localhost:4000/presentations/" + _id, {
+  handleDeleteItem = async _id => {
+    await fetch(apiURL + `/`+ _id, {
       method: "DELETE"
-    });
-    await this.getPresenters()
-};
+    })
+    await this.getPresentations();
+    // history.replace('/admin/presentationsform')
+    // history.push('/admin/presentationsform')
+    console.log('hi')
+    history.go(0)
+  };
 
 
-getPresenters = async () => {
-    await fetch("http://localhost:4000/presentations", {
-        // mode: "cors", may or may not need it...mike did it here in his because he didn't have access to third party api
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(results => {
-          return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
-        })
-        .then(data => {
-            
-          this.setState({list: data}); 
-        });
-      }
 
-  async componentWillMount() {
-      await this.getPresenters()
+    componentDidMount() {
+      this.getPresentations();
   }
-   
-
 
   render() {
-    const presentations = this.state.list;
+    const presentations = this.state.presentations;
 
-    // console.log(presentations)  this can go anywhere outside of the scope inside of the class
+    //  console.log(presentations)  this can go anywhere outside of the scope inside of the className
     return (
       <div className="Presentations">
         <form onSubmit={this.handleSubmit}>
@@ -164,7 +182,7 @@ getPresenters = async () => {
               placeholder="Search by Id"
               onChange={e => this.setState({ searchId: e.target.value })}
             />
-            {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
+            {/* <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small> */}
           </div>
           <button type="submit" className="btn btn-primary">
             Search
@@ -175,19 +193,19 @@ getPresenters = async () => {
             </button> */}
         </form>
         <hr />
-            {presentations.map(presentation => (
-                <div key={presentation._id}>presenter: {presentation.presenter}
-                    <br />
-                    Year: {presentation.year}
-                    <br />
-                    Title: {presentation.title}
-                    <br />
-                    Location: {presentation.location}
-                    <br />
-                    Description: {presentation.description}
-                    <br />
-                    id: {presentation._id}
-            
+        {presentations.map(presentation => (
+          <div key={presentation._id}>
+            Presenter: {presentation.presenter}
+            <br />
+            Year: {presentation.year}
+            <br />
+            Title: {presentation.title}
+            <br />
+            Location: {presentation.location}
+            <br />
+            Description: {presentation.description}
+            <br />
+            id: {presentation._id}
             <button onClick={e => this.handleUpdateItem(e, presentation._id)}>
               {" "}
               Edit{" "}
@@ -197,7 +215,6 @@ getPresenters = async () => {
               X{" "}
             </button>
             <hr />
-
           </div>
         ))}
       </div>
