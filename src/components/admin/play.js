@@ -77,50 +77,50 @@
     //       });
     //   }
 
-    <div>
-    {this.state.presentations.map
-      (presentations =>
-        <div className="border" key={presentation._id}>
-          <h3> Presenter: {presentation.presenter}</h3>
-          <p> Year: {presentation.year}</p>
-          <p> Address: {presentation.title}</p>
-  </div>
-  </div></div>
+//     <div>
+//     {this.state.presentations.map
+//       (presentations =>
+//         <div className="border" key={presentation._id}>
+//           <h3> Presenter: {presentation.presenter}</h3>
+//           <p> Year: {presentation.year}</p>
+//           <p> Address: {presentation.title}</p>
+//   </div>
+//   </div></div>
 
-  <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Update
-  </button>
+//   <button type="button" className="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Update
+//   </button>
 
-  <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-       aria-hidden="true">
-    <div className="modal-dialog modal-sm">
-      <div className="modal-content">
+//   <div className="modal fade bd-example-modal-sm" tabIndex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+//        aria-hidden="true">
+//     <div className="modal-dialog modal-sm">
+//       <div className="modal-content">
 
-        <form onSubmit={() => this.handleUpdate(presentation._id)}>
-          <div className="form-group">
-            <label htmlFor="InputPresenter">Presenter(s)</label>
-            <input type="text" className="form-control" id="InputPresenter" aria-describedby="PresenterHelp"
-                   placeholder="Presenter(s)" onChange={e => this.setState({presenter: e.target.value})}/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="InputYear">Year</label>
-            <input type="number" className="form-control" id="InputYear" placeholder="Year"
-                   onChange={e => this.setState({ year: e.target.value })}/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="InputTitle">Title</label>
-            <input type="text" className="form-control" id="InputTitle" placeholder="Title"
-                   onChange={e => this.setState({ title: e.target.value })}/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="InputDescription">Description</label>
-            <input type="text" className="form-control" id="InputDescription" placeholder="Description"
-                   onChange={e => this.setState({ description: e.target.value })}/>
-          </div>
-          <div className="form-group">
-            <label htmlFor="InputLocation">Location</label>
-            <input type="text" className="form-control" id="InputLocation" placeholder="Location"
-                   onChange={e => this.setState({ location: e.target.value })}/>
-          </div>
+//         <form onSubmit={() => this.handleUpdate(presentation._id)}>
+//           <div className="form-group">
+//             <label htmlFor="InputPresenter">Presenter(s)</label>
+//             <input type="text" className="form-control" id="InputPresenter" aria-describedby="PresenterHelp"
+//                    placeholder="Presenter(s)" onChange={e => this.setState({presenter: e.target.value})}/>
+//           </div>
+//           <div className="form-group">
+//             <label htmlFor="InputYear">Year</label>
+//             <input type="number" className="form-control" id="InputYear" placeholder="Year"
+//                    onChange={e => this.setState({ year: e.target.value })}/>
+//           </div>
+//           <div className="form-group">
+//             <label htmlFor="InputTitle">Title</label>
+//             <input type="text" className="form-control" id="InputTitle" placeholder="Title"
+//                    onChange={e => this.setState({ title: e.target.value })}/>
+//           </div>
+//           <div className="form-group">
+//             <label htmlFor="InputDescription">Description</label>
+//             <input type="text" className="form-control" id="InputDescription" placeholder="Description"
+//                    onChange={e => this.setState({ description: e.target.value })}/>
+//           </div>
+//           <div className="form-group">
+//             <label htmlFor="InputLocation">Location</label>
+//             <input type="text" className="form-control" id="InputLocation" placeholder="Location"
+//                    onChange={e => this.setState({ location: e.target.value })}/>
+//           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+//           <button type="submit" className="btn btn-primary">Submit</button>
+//         </form>
