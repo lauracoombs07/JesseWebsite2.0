@@ -30,8 +30,18 @@ class PresentationsForm extends Component {
     mtitle: "",
     mdescription: "",
     mlocation: "",
+    mpresentations: [
+      {
+        mpresenter: "",
+        myear: "",
+        mtitle: "",
+        mdescription: "",
+        mlocation: "",
+        m_id: ""
+      }
+    ]
   };
-//GET
+  //GET
   getPresentations = async () => {
     return fetch("http://localhost:4000/presentations")
       .then(results => {
@@ -41,7 +51,7 @@ class PresentationsForm extends Component {
         this.setState({ presentations: data });
       });
   }; //Scope locked data1 variable
-//POST
+  //POST
   handleSubmit = async e => {
     e.preventDefault(); //puts in in the omnibar/address bar and refreshes page
     const formData = JSON.stringify({
@@ -61,28 +71,27 @@ class PresentationsForm extends Component {
     await this.getPresentations();
     history.go(0); //clears the form by refreshing the page. change later to set inputs to empty ''
   };
-//UPDATE
-  handleAddItem = async (_id) => {
-
+  //UPDATE
+  handleAddItem = async _id => {
     const newData = JSON.stringify({
-        presenter: this.state.mpresenter,
-        year: this.state.myear,
-        title: this.state.mtitle,
-        description: this.state.mdescription,
-        location: this.state.mlocation
-      });
-    
+      presenter: this.state.mpresenter,
+      year: this.state.myear,
+      title: this.state.mtitle,
+      description: this.state.mdescription,
+      location: this.state.mlocation
+    });
+
     await fetch(apiURL + `/` + _id, {
-      method: 'PUT',
+      method: "PUT",
       body: newData,
       headers: {
         "Content-Type": "application/json"
       }
     });
     await this.getPresentations();
-};
+  };
 
-//DELETE
+  //DELETE
   handleDeleteItem = async _id => {
     await fetch(apiURL + `/` + _id, {
       method: "DELETE"
@@ -100,11 +109,22 @@ class PresentationsForm extends Component {
 
   render() {
     const presentations = this.state.presentations;
-    console.log(this.state)
+    console.log(this.state);
     //  console.log(presentations)  this can go anywhere outside of the scope inside of the className
     return (
       <div className="Presentations">
+<a class="btn btn-primary" href="/admin/FormUpdate" role="button">Go to Update</a>
         <form onSubmit={this.handleSubmit}>
+        {/* <div className="form-group">
+            <label htmlFor="exampleInputPresenter">Id</label>
+            <input
+              type="text"
+              className="form-control"
+              id="exampleInputPresenter"
+              placeholder="Presenter(s)"
+              onChange={e => this.setState({ id: e.target.value })}
+            />
+          </div> */}
           <div className="form-group">
             <label htmlFor="exampleInputPresenter">Presenter(s)</label>
             <input
@@ -186,6 +206,8 @@ class PresentationsForm extends Component {
         <hr />
         {presentations.map((presentation, index) => (
           <div key={index}>
+            id: {presentation._id}
+            <br />
             Presenter: {presentation.presenter}
             <br />
             Year: {presentation.year}
@@ -196,26 +218,26 @@ class PresentationsForm extends Component {
             <br />
             Description: {presentation.description}
             <br />
-            id: {presentation._id}
-           
-            <button 
+            <button
               type="button"
               className="btn btn-primary"
               data-toggle="modal"
               data-target="#updateModal"
-              
+              // data-id={presentation._id}
+              // $('#myModal')
+
+              // {`#${presentation._id}`}
             >
               Edit
             </button>
-            
             <button onClick={() => this.handleDeleteItem(presentation._id)}>
               {" "}
               X{" "}
             </button>
-            
             <div
               className="modal fade"
               id="updateModal"
+              // data-id={presentation._id}
               tabIndex="-1"
               role="dialog"
               aria-labelledby="updateModalLabel"
@@ -237,7 +259,7 @@ class PresentationsForm extends Component {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <form onSubmit={e =>this.handleAddItem(presentation._id)}>
+                    <form onSubmit={e => this.handleAddItem(presentation._id)}>
                       <div className="form-group">
                         <label htmlFor="exampleInputPresenter">
                           Presenter(s)
@@ -247,8 +269,10 @@ class PresentationsForm extends Component {
                           className="form-control"
                           id="exampleInputPresenter"
                           placeholder="Presenter(s)"
-                        //   value={this.state.value}
-                          onChange={e => this.setState({ mpresenter: e.target.value })}
+                          // value={`${presentation.presenter}`}
+                          onChange={e =>
+                            this.setState({ mpresenter: e.target.value })
+                          }
                         />
                       </div>
                       <div className="form-group">
@@ -258,8 +282,10 @@ class PresentationsForm extends Component {
                           className="form-control"
                           id="exampleInputYear"
                           placeholder="Year"
-                        //   value={this.state.value}
-                          onChange={e => this.setState({ myear: e.target.value })}
+                          value={presentation.year}
+                          onChange={e =>
+                            this.setState({ myear: e.target.value })
+                          }
                         />
                       </div>
                       <div className="form-group">
@@ -269,8 +295,10 @@ class PresentationsForm extends Component {
                           className="form-control"
                           id="exampleInputTitle"
                           placeholder="Title"
-                          value={this.state.value}
-                          onChange={e => this.setState({ mtitle: e.target.value })}
+                          value={presentation.title}
+                          onChange={e =>
+                            this.setState({ mtitle: e.target.value })
+                          }
                         />
                       </div>
                       <div className="form-group">
@@ -282,8 +310,10 @@ class PresentationsForm extends Component {
                           className="form-control"
                           id="exampleInputDescription"
                           placeholder="Description"
-                        //   value={this.state.value}
-                        onChange={e => this.setState({ mdescription: e.target.value })}
+                          value={presentation.description}
+                          onChange={e =>
+                            this.setState({ mdescription: e.target.value })
+                          }
                         />
                       </div>
                       <div className="form-group">
@@ -293,8 +323,10 @@ class PresentationsForm extends Component {
                           className="form-control"
                           id="exampleInputLocation"
                           placeholder="Location"
-                        //   value={this.state.value}
-                        onChange={e => this.setState({ mlocation: e.target.value })}
+                          value={presentation.location}
+                          onChange={e =>
+                            this.setState({ mlocation: e.target.value })
+                          }
                         />
                       </div>
 
@@ -303,9 +335,7 @@ class PresentationsForm extends Component {
                       </button>
                     </form>
                   </div>
-                  <div className="modal-footer">
-
-                  </div>
+                  <div className="modal-footer" />
                 </div>
               </div>
             </div>
@@ -320,28 +350,26 @@ class PresentationsForm extends Component {
 
 export default PresentationsForm;
 
-
-
-  // handleSearchId = async (e, _id) => {
-  //   alert("FIND ONE id");
-  //   e.preventDefault(); //
-  //   const searchId = JSON.stringify({ ...this.state });
-  //   await fetch(apiURL/:" + _id, {
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     }
-  //   })
-  //     .then(results => {
-  //       return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
-  //     })
-  //     .then(data => {
-  //       this.setState({
-  //         //id, presenter: , year, title, description, location
-  //         //putting it into state so we can access it. using it in map at bottom
-  //         // list: searchId //only getting list [] from db
-  //       }); //runs console log before set state. if we put it here, it forces th console log to run right where we want
-  //     });
-  // };
+// handleSearchId = async (e, _id) => {
+//   alert("FIND ONE id");
+//   e.preventDefault(); //
+//   const searchId = JSON.stringify({ ...this.state });
+//   await fetch(apiURL/:" + _id, {
+//     headers: {
+//       "Content-Type": "application/json"
+//     }
+//   })
+//     .then(results => {
+//       return results.json(); //.json validates/parses or converting the data so it can be used and acted on as such.
+//     })
+//     .then(data => {
+//       this.setState({
+//         //id, presenter: , year, title, description, location
+//         //putting it into state so we can access it. using it in map at bottom
+//         // list: searchId //only getting list [] from db
+//       }); //runs console log before set state. if we put it here, it forces th console log to run right where we want
+//     });
+// };
 //   onChange = e => {
 //     this.setState({ value: e.target.value });
 //   };
@@ -368,25 +396,25 @@ export default PresentationsForm;
 //     await this.getPeople()
 //   };
 
-  // handleUpdateChange = (e) => {
-  //     // if (["presenter", "year", "title", "description", "location", "id"]) {
-  //         const dataUpdate = [...this.state.presentations]
+// handleUpdateChange = (e) => {
+//     // if (["presenter", "year", "title", "description", "location", "id"]) {
+//         const dataUpdate = [...this.state.presentations]
 
-  //         dataUpdate[e.target.dataset.id]= e.target.value
+//         dataUpdate[e.target.dataset.id]= e.target.value
 
-  //         this.setState({ dataUpdate })//set state to current state
-  //         // } else {
-  //         this.setState({ [e.target.name]: e.target.value })//else if diff override with new name:value
-  //          }
-  //     // }
+//         this.setState({ dataUpdate })//set state to current state
+//         // } else {
+//         this.setState({ [e.target.name]: e.target.value })//else if diff override with new name:value
+//          }
+//     // }
 
-  // handleUpdateItem = async (_id) => {
+// handleUpdateItem = async (_id) => {
 
-  //     const formUpdate = JSON.stringify({ ...this.state })
-  //     await fetch(apiURL + `/` + _id, {  //path
-  //         method: "PUT",
-  //         body: formUpdate,
-  //         headers: { "Content-Type": "application/json" }
-  //         });
-  //     await this.getPresentations();
-  // }
+//     const formUpdate = JSON.stringify({ ...this.state })
+//     await fetch(apiURL + `/` + _id, {  //path
+//         method: "PUT",
+//         body: formUpdate,
+//         headers: { "Content-Type": "application/json" }
+//         });
+//     await this.getPresentations();
+// }

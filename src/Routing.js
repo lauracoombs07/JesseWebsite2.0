@@ -7,6 +7,7 @@ import Presentations from "./components/Presentations";
 import Publications from "./components/Publications";
 import Research from "./components/Research";
 import Teaching from "./components/Teaching";
+import FormUpdate from "./components/admin/FormUpdate";
 
 import PresentationsForm from "./components/admin/PresentationsForm";
 // import AwardsForm from "./components/admin/AwardsForm";
@@ -24,6 +25,7 @@ const Routing = () => (
       <Route path="/publications" component={Publications} />
       <Route path="/research" component={Research} />
       <Route path="/teaching" component={Teaching} />
+      <Route path="/admin/formupdate" component={FormUpdate} />
     
       <Route path="/admin/presentationsform" component={PresentationsForm} />
       {/* <Route path="/admin/awardsform" component={AwardsForm} />
